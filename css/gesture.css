@@ -1,0 +1,31 @@
+.cam-circle-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid #ff2233;
+  box-shadow: 0 0 15px rgba(255, 34, 51, 0.6), inset 0 0 10px rgba(255, 34, 51, 0.3);
+  overflow: hidden;
+  z-index: 100;
+  background: #000;
+  display: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cam-circle-container.pinch-flash {
+  border-color: #ffffff;
+  box-shadow: 0 0 35px #ff2233, 0 0 70px #ff0033;
+}
+
+.cam-circle-container video,
+.cam-circle-container canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%) scaleX(-1);
+  object-fit: cover;
+}

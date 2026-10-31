@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcade Screen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://storage.googleapis.com">
+  <link rel="preload" href="assets/background.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/arcade_screen_on.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/start.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/game.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/screen_on_light_on.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/joystick_frames/0000.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/girl.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/collision.png" as="image" type="image/png">
+  <link rel="stylesheet" href="css/arcade.css">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/wires.css">
+  <link rel="stylesheet" href="css/gesture.css">
+</head>
+
+<body>
+  <div id="cam-container" class="cam-circle-container">
+    <video id="webcam" autoplay playsinline muted></video>
+    <canvas id="gesture-canvas"></canvas>
+  </div>
+  <div class="arcade-stage">
+    <div id="screen-viewport" class="screen-viewport">
+      <img id="game-screen" src="assets/start.webp" class="game-screen" alt="Game Background" decoding="async">
+      <canvas id="game-canvas" width="1920" height="1080" class="game-canvas"></canvas>
+      <div id="arcade-menu" class="arcade-menu">
+        <div id="menu-start" class="menu-item" data-action="start">START</div>
+        <div id="menu-options" class="menu-item" data-action="options">OPTIONS</div>
+      </div>
+      <div id="arcade-options" class="arcade-options" style="display: none;">
+        <div class="options-title">OPTIONS</div>
+        <div id="opt-sound" class="menu-item options-item" data-opt="sound">SOUND: <span id="opt-sound-val">ON</span></div>
+        <div id="opt-back" class="menu-item back-btn" data-action="back">BACK</div>
+      </div>
+      <div id="screen-crt" class="screen-crt"></div>
+    </div>
+    <img id="cabinet-base" src="assets/arcade_screen_on.webp" class="arcade-cabinet" alt="Arcade Cabinet" decoding="async">
+    <img id="cabinet-minus" src="assets/arcade_screen_on_minus-joystick.webp" class="arcade-cabinet" alt="Arcade Cabinet Minus Joystick" decoding="async" style="display: none;">
+    <img id="cabinet-light" src="assets/screen_on_light_on.webp" class="arcade-cabinet cabinet-light"
+      alt="Arcade Cabinet Light On" decoding="async">
+    <canvas id="joystick-canvas" width="1920" height="1080" class="joystick-layer"></canvas>
+    <canvas id="anim-canvas" width="1920" height="1080" class="anim-canvas"></canvas>
+
+    <div id="sockets-overlay" class="sockets-overlay">
+      <svg id="wire-svg" class="wire-svg" viewBox="0 0 1920 1080">
+        <path id="preview-wire" d="" stroke="#1a1a1a" stroke-width="12" stroke-linecap="round" fill="none"
+          style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6)); display: none;" />
+        <path id="preview-wire-inner" d="" stroke="#555" stroke-width="4" stroke-linecap="round" fill="none"
+          style="display: none;" />
+      </svg>
+
+      <div class="socket-target" data-socket="left-top"
+        style="left: 20.8333%; top: 18.5185%; width: 7.8125%; height: 18.5185%;" title="Top Left Socket"></div>
+      <div class="socket-target" data-socket="left-middle"
+        style="left: 20.8333%; top: 46.2963%; width: 7.8125%; height: 13.8889%;" title="Middle Left Socket"></div>
+      <div class="socket-target" data-socket="left-bottom"
+        style="left: 20.8333%; top: 64.8148%; width: 7.8125%; height: 18.5185%;" title="Bottom Left Socket"></div>
+
+      <div class="socket-target" data-socket="right-top"
+        style="left: 72.9167%; top: 23.1481%; width: 7.8125%; height: 13.8889%;" title="Top Right Socket"></div>
+      <div class="socket-target" data-socket="right-middle"
+        style="left: 72.9167%; top: 46.2963%; width: 7.8125%; height: 13.8889%;" title="Middle Right Socket"></div>
+      <div class="socket-target" data-socket="right-bottom"
+        style="left: 72.9167%; top: 64.8148%; width: 7.8125%; height: 18.5185%;" title="Bottom Right Socket"></div>
+    </div>
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/joystick.js"></script>
+  <script src="js/konami.js"></script>
+  <script src="js/morse.js"></script>
+  <script src="js/rotation.js"></script>
+  <script src="js/wires.js"></script>
+  <script src="js/gesture.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

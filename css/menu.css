@@ -1,0 +1,81 @@
+.arcade-menu {
+  position: absolute;
+  bottom: 22%;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  z-index: 6;
+  pointer-events: auto;
+  user-select: none;
+}
+
+.menu-item {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 2px;
+  color: #ff2233;
+  cursor: pointer;
+  padding: 6px 14px;
+  transition: transform 0.15s ease, color 0.15s ease, text-shadow 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  color: #ff40a0;
+  text-shadow: 0 0 10px #ff40a0, 0 0 20px #ff0077;
+  transform: scale(1.06);
+}
+
+.menu-item::before {
+  content: '>';
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  color: #ff40a0;
+}
+
+.menu-item:hover::before,
+.menu-item.active::before {
+  opacity: 1;
+}
+
+.arcade-options {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 6;
+  background: transparent;
+  font-family: 'Press Start 2P', monospace;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.options-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: #ff2233;
+  text-shadow: 0 0 8px #ff2233;
+  margin-bottom: 8px;
+}
+
+.options-item {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.back-btn {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
